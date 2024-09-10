@@ -17,16 +17,18 @@ jobs:
       - name: Setup mdBook
         uses: peaceiris/actions-mdbook@v2
         with:
-          # mdbook-version: '0.4.40'
           mdbook-version: 'latest'
 
       - run: mdbook build
 
+      - name: Install 7zip
+        run: sudo apt-get install -y p7zip-full
+
       - name: Package binary files
-      run: |
-        cd build
-        7z a site.zip *
-        
+        run: |
+          cd build
+          7z a site.zip *
+
       - name: Upload binary files as artifact
         uses: actions/upload-artifact@main
         with:
