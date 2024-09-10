@@ -12,13 +12,13 @@ jobs:
     concurrency:
       group: ${{ github.workflow }}-${{ github.ref }}
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v4
 
       - name: Setup mdBook
         uses: peaceiris/actions-mdbook@v2
         with:
-          mdbook-version: '0.4.40'
-          # mdbook-version: 'latest'
+          # mdbook-version: '0.4.40'
+          mdbook-version: 'latest'
 
       - run: mdbook build
 
